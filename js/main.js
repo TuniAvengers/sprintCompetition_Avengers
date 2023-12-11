@@ -19,7 +19,8 @@ function appendData(data) {
         <img src="${data.productos[i].imagen}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">${data.productos[i].nombre}</h5>
-          <p class="card-text">${data.productos[i].precio}€</p>
+          <p class="card-text">Ración: ${data.productos[i].peso} kg</p>
+          <p class="card-text">${data.productos[i].precio}€ IVA incl.</p>
           <a href="#" class="btn btn-primary">Comprar</a>
         </div>
       </div>`;
