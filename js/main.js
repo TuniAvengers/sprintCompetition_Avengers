@@ -19,10 +19,28 @@ function appendData(data) {
         <img src="${data.productos[i].imagen}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">${data.productos[i].nombre}</h5>
-          <p class="card-text">${data.productos[i].precio}</p>
+          <p class="card-text">${data.productos[i].precio}€</p>
           <a href="#" class="btn btn-primary">Comprar</a>
         </div>
       </div>`;
         mainContainer.appendChild(div);
     }
+}
+
+
+
+//CODIGO SLIDER
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("slide");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  slides[slideIndex-1].style.display = "block";
+  setTimeout(showSlides, 2000); // Cambia la imagen cada 2 segundos
 }
