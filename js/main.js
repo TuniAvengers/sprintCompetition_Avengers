@@ -29,18 +29,67 @@ function appendData(data) {
 
 
 
-//CODIGO SLIDER
+// //CODIGO SLIDER
+// let slideIndex = 0;
+// showSlides();
+
+// function showSlides() {
+//   let i;
+//   let slides = document.getElementsByClassName("slide");
+//   for (i = 0; i < slides.length; i++) {
+//     slides[i].style.display = "none";
+//   }
+//   slideIndex++;
+//   if (slideIndex > slides.length) {slideIndex = 1}
+//   slides[slideIndex-1].style.display = "block";
+//   setTimeout(showSlides, 2000); // Cambia la imagen cada 2 segundos
+// }
+
 let slideIndex = 0;
 showSlides();
 
 function showSlides() {
   let i;
   let slides = document.getElementsByClassName("slide");
+  
+  // Oculta todas las diapositivas
   for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
+    slides[i].style.opacity = 0;
   }
+  
   slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}
-  slides[slideIndex-1].style.display = "block";
-  setTimeout(showSlides, 2000); // Cambia la imagen cada 2 segundos
+  if (slideIndex > slides.length) {
+    slideIndex = 1;
+  }
+  
+  // Muestra la diapositiva actual con un efecto de fade in
+  fadeIn(slides[slideIndex-1], 2000);
+  
+  // Establece la opacidad de las diapositivas anteriores para mantenerlas superpuestas
+  for (i = 0; i < slides.length; i++) {
+    if (i !== slideIndex - 1) {
+      slides[i].style.opacity = 1;
+    }
+  }
+  
+  setTimeout(showSlides, 4000); // Cambia la imagen cada 4 segundos (2s fade in + 2s superposición)
+}
+
+function fadeIn(element, duration) {
+  let opacity = 0;
+  let interval = 50;
+  let gap = interval / duration;
+
+  function update() {
+    opacity += gap;
+
+    if (opacity >= 1) {
+      element.style.opacity = 1;
+      clearInterval(fadeInterval);
+    } else {
+      element.style.opacity = opacity;
+    }
+  }
+
+  let fadeInterval = setInterval(update, interval);
 }
