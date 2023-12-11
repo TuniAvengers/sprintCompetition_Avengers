@@ -9,7 +9,7 @@ fetch("js/producto.json")
     .catch(function (err) {
         console.log("error: " + err);
     });
- 
+
 // Append the data to the DOM
 function appendData(data) {
     const mainContainer = document.querySelector(".display");
@@ -27,8 +27,6 @@ function appendData(data) {
     }
 }
 
-
-
 // //CODIGO SLIDER
 // let slideIndex = 0;
 // showSlides();
@@ -45,51 +43,76 @@ function appendData(data) {
 //   setTimeout(showSlides, 2000); // Cambia la imagen cada 2 segundos
 // }
 
-let slideIndex = 0;
-showSlides();
+// let slideIndex = 0;
+// showSlides();
 
-function showSlides() {
-  let i;
-  let slides = document.getElementsByClassName("slide");
-  
-  // Oculta todas las diapositivas
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.opacity = 0;
-  }
-  
-  slideIndex++;
-  if (slideIndex > slides.length) {
-    slideIndex = 1;
-  }
-  
-  // Muestra la diapositiva actual con un efecto de fade in
-  fadeIn(slides[slideIndex-1], 2000);
-  
-  // Establece la opacidad de las diapositivas anteriores para mantenerlas superpuestas
-  for (i = 0; i < slides.length; i++) {
-    if (i !== slideIndex - 1) {
-      slides[i].style.opacity = 1;
-    }
-  }
-  
-  setTimeout(showSlides, 4000); // Cambia la imagen cada 4 segundos (2s fade in + 2s superposición)
-}
+// function showSlides() {
+//   let i;
+//   let slides = document.getElementsByClassName("slide");
 
-function fadeIn(element, duration) {
-  let opacity = 0;
-  let interval = 50;
-  let gap = interval / duration;
+//   // Oculta todas las diapositivas
+//   for (i = 0; i < slides.length; i++) {
+//     slides[i].style.opacity = 0;
+//   }
 
-  function update() {
-    opacity += gap;
+//   slideIndex++;
+//   if (slideIndex > slides.length) {
+//     slideIndex = 1;
+//   }
 
-    if (opacity >= 1) {
-      element.style.opacity = 1;
-      clearInterval(fadeInterval);
-    } else {
-      element.style.opacity = opacity;
-    }
-  }
+//   // Muestra la diapositiva actual con un efecto de fade in
+//   fadeIn(slides[slideIndex-1], 2000);
 
-  let fadeInterval = setInterval(update, interval);
-}
+//   // Establece la opacidad de las diapositivas anteriores para mantenerlas superpuestas
+//   for (i = 0; i < slides.length; i++) {
+//     if (i !== slideIndex - 1) {
+//       slides[i].style.opacity = 1;
+//     }
+//   }
+
+//   setTimeout(showSlides, 4000); // Cambia la imagen cada 4 segundos (2s fade in + 2s superposición)
+// }
+
+// function fadeIn(element, duration) {
+//   let opacity = 0;
+//   let interval = 50;
+//   let gap = interval / duration;
+
+//   function update() {
+//     opacity += gap;
+
+//     if (opacity >= 1) {
+//       element.style.opacity = 1;
+//       clearInterval(fadeInterval);
+//     } else {
+//       element.style.opacity = opacity;
+//     }
+//   }
+
+//   let fadeInterval = setInterval(update, interval);
+// }
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function () {
+        // Obtén las imágenes y el contenedor del slider
+        var slides = document.querySelectorAll(".slide");
+        var currentSlide = 0;
+
+        // Muestra el primer slide
+        slides[currentSlide].style.display = "block";
+
+        // Función para cambiar al siguiente slide con fade
+        function nextSlide() {
+            slides[currentSlide].style.animation = "fadeout 1s";
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].style.animation = "fadein 1s";
+            slides[currentSlide].style.display = "block";
+            setTimeout(function () {
+                slides[currentSlide].style.display = "none";
+            }, 2000); // Tiempo de espera antes de ocultar el slide anterior
+        }
+
+        // Configura la transición automática cada 3 segundos (ajusta según tus necesidades)
+        setInterval(nextSlide, 4000);
+    });
+});
