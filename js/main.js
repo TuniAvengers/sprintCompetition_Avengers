@@ -1,129 +1,77 @@
-// Fetch the JSON file
-fetch("js/producto.json")
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    appendData(data);
-  })
-  .catch(function (err) {
-    console.log("error: " + err);
-  });
 
-// Append the data to the DOM
-function appendData(data) {
-  const mainContainer = document.querySelector(".display");
-  for (let i = 0; i < data.productos.length; i++) {
-    const div = document.createElement("div");
-    div.innerHTML = `<div class="card">
+//SLIDER
+document.addEventListener("DOMContentLoaded", function() {
+    const images = document.querySelectorAll('.slider-img');
+    let currentIndex = 0;
+
+    function showImage(index) {
+        images.forEach((image, i) => {
+            if (i === index) {
+                image.classList.add('active');
+            } else {
+                image.classList.remove('active');
+            }
+        });
+    }
+
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+    }
+
+    setInterval(nextImage, 5000);
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    function addOrder(id, nombre, precio, peso) {    
+        const total = document.getElementById("total");
+        total.classList.remove("hide");
+        const listItem = document.createElement("li");
+        //añadimos el id del producto al elemento li
+        listItem.setAttribute("id", id);
+        listItem.innerHTML = `
+            <p>${nombre}</p>
+            <p>${peso} kg</p>
+            <p>${precio}€</p>
+            <button class="btn btn-danger">X</button>
+        `;
+    
+        document.getElementById("list-order").appendChild(listItem);
+        total.innerHTML = parseFloat(document.getElementById("total").innerHTML) + precio;
+    }
+  // Fetch the JSON file
+  fetch("js/producto.json")
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      appendData(data);
+    })
+    .catch(function (err) {
+      console.log("error: " + err);
+    });
+
+  // Append the data to the DOM
+  function appendData(data) {
+    const mainContainer = document.getElementById("display");
+    for (let i = 0; i < data.productos.length; i++) {
+      const div = document.createElement("div");
+      div.classList.add("card");
+      div.innerHTML = `
         <img src="${data.productos[i].imagen}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">${data.productos[i].nombre}</h5>
           <p class="card-text">Ración: ${data.productos[i].peso} kg</p>
           <p class="card-text">${data.productos[i].precio}€ IVA incl.</p>
-          <a href="#order" class="btn btn-primary" onclick="addOrder(${data.productos[i]})">Comprar</a>
-        </div>
-      </div>`;
-    mainContainer.appendChild(div);
-  }
-}
-
-// function addOrder(producto) {
-//   orderDisplay = document.getElementById("listOrder");
-//   orderDisplay.innerHTML += `
-//       <li>
-//       <p>${producto.nombre}</p>
-//       <p>${producto.precio}€</p>
-//       </li>
-//       `;
-// };
-
-// //CODIGO SLIDER
-// let slideIndex = 0;
-// showSlides();
-
-// function showSlides() {
-//   let i;
-//   let slides = document.getElementsByClassName("slide");
-//   for (i = 0; i < slides.length; i++) {
-//     slides[i].style.display = "none";
-//   }
-//   slideIndex++;
-//   if (slideIndex > slides.length) {slideIndex = 1}
-//   slides[slideIndex-1].style.display = "block";
-//   setTimeout(showSlides, 2000); // Cambia la imagen cada 2 segundos
-// }
-
-// let slideIndex = 0;
-// showSlides();
-
-// function showSlides() {
-//   let i;
-//   let slides = document.getElementsByClassName("slide");
-
-//   // Oculta todas las diapositivas
-//   for (i = 0; i < slides.length; i++) {
-//     slides[i].style.opacity = 0;
-//   }
-
-//   slideIndex++;
-//   if (slideIndex > slides.length) {
-//     slideIndex = 1;
-//   }
-
-//   // Muestra la diapositiva actual con un efecto de fade in
-//   fadeIn(slides[slideIndex-1], 2000);
-
-//   // Establece la opacidad de las diapositivas anteriores para mantenerlas superpuestas
-//   for (i = 0; i < slides.length; i++) {
-//     if (i !== slideIndex - 1) {
-//       slides[i].style.opacity = 1;
-//     }
-//   }
-
-//   setTimeout(showSlides, 4000); // Cambia la imagen cada 4 segundos (2s fade in + 2s superposición)
-// }
-
-// function fadeIn(element, duration) {
-//   let opacity = 0;
-//   let interval = 50;
-//   let gap = interval / duration;
-
-//   function update() {
-//     opacity += gap;
-
-//     if (opacity >= 1) {
-//       element.style.opacity = 1;
-//       clearInterval(fadeInterval);
-//     } else {
-//       element.style.opacity = opacity;
-//     }
-//   }
-
-//   let fadeInterval = setInterval(update, interval);
-// }
-
-document.addEventListener("DOMContentLoaded", function () {
-  document.addEventListener("DOMContentLoaded", function () {
-    // Obtén las imágenes y el contenedor del slider
-    var slides = document.querySelectorAll(".slide");
-    var currentSlide = 0;
-
-    // Muestra el primer slide
-    slides[currentSlide].style.display = "block";
-
-    // Función para cambiar al siguiente slide con fade
-    function nextSlide() {
-      slides[currentSlide].style.animation = "fadeout 1s";
-      currentSlide = (currentSlide + 1) % slides.length;
-      slides[currentSlide].style.animation = "fadein 1s";
-      slides[currentSlide].style.display = "block";
-      setTimeout(function () {
-        slides[currentSlide].style.display = "none";
-      }, 2000); // Tiempo de espera antes de ocultar el slide anterior
+          <button class="btn btn-primary">Comprar</button>
+        </div>`;
+        div.querySelector("button").addEventListener("click", function () {
+            addOrder(data.productos[i].id, data.productos[i].nombre, parseFloat(data.productos[i].precio), parseFloat(data.productos[i].peso));
+        });
+      mainContainer.appendChild(div);
     }
+  }
 
-    // Configura la transición automática cada 3 segundos (ajusta según tus necesidades)
-    setInterval(nextSlide, 4000);
-  });
+  
 });

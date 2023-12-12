@@ -47,16 +47,23 @@ li {
     overflow-y: hidden;
 }
 
-.slider {
+#slider-container {
     position: relative;
-    width: 100%;
-    overflow: hidden;
+    max-width: 100%;
+    margin: auto;
 }
 
-.slide img {
+.slider-img {
+    position: absolute;
     width: 100%;
     height: auto;
-} 
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slider-img.active {
+    opacity: 1;
+}
 
 .content {
     padding: 40px;
@@ -119,6 +126,12 @@ li {
 }
 
 /*Prototipo*/
-/* .order{
+.hide{
     display: none;
-} */
+}
+
+li{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}

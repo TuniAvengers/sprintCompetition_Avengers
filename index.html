@@ -1,63 +1,56 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ezequiel</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-</head>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <div class="header">
-            <div class="logo">
-                <a href="./index.html"><img src="../assets/img/logo-menu.png" alt="Logo Ezequiel"></a>
-            </div>
-            <div class="menu">
-                <ul>
-                    <li><a href="./index.html">Inicio</a></li>
-                    <li><a href="./templates/acercaDe.html">Acerca de</a></li>
-                    <li><a href="./templates/contacto.html">Contacto</a></li>
-                </ul>
-            </div>
+      <div class="header">
+        <div class="logo">
+          <a href="./index.html"
+            ><img src="../assets/img/logo-menu.png" alt="Logo Ezequiel"
+          /></a>
         </div>
+        <div class="menu">
+          <ul>
+            <li><a href="./index.html">Inicio</a></li>
+            <li><a href="./templates/acercaDe.html">Acerca de</a></li>
+            <li><a href="./templates/contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
 
-        <div class="banner">
-            <!-- <img src="./assets/img/restaurante-banner.jpg" alt="Banner"> -->
-            <!-- CODIGO SLIDER -->
-            <div class="slider">
-                <div class="slide"> <!-- Primer slide -->
-                    <img src="/assets/img/restaurante-banner.jpg" alt="Imagen 1">
-                </div>
-                <div class="slide"> <!-- Segundo slide -->
-                    <img src="/assets/img/ezequiel2.jpg" alt="Imagen 2">
-                </div>
-                <div class="slide"> <!-- Tercer slide -->
-                    <img src="/assets/img/ezequiel3.jpg" alt="Imagen 3">
-                </div>
-            </div>
+      <div class="banner">
+        <!-- <img src="./assets/img/restaurante-banner.jpg" alt="Banner"> -->
+        <!-- CODIGO SLIDER -->
+          <div id="slider-container">
+            <img src="/assets/img/restaurante-banner.jpg" class="slider-img active" alt="Image 1">
+            <img src="/assets/img/ezequiel2.jpg" class="slider-img" alt="Image 2">
+            <img src="/assets/img/ezequiel3.jpg" class="slider-img" alt="Image 3">
         </div>
-        <div class="content">
-            <div class="main">
-                <h1>Contenido Principal</h1>
-            </div>
         </div>
+      </div>
+      <div class="content">
+        <div class="main">
+          <h1>Contenido Principal</h1>
+        </div>
+        <!-- Prueba para alvaro -->
+        <div class="display" id="display"></div>
+        <!-- Listado pedido -->
+        <div class="order" id="order">
+          <h1>Pedido</h1>
+          <ul id="list-order"></ul>
+          <span id="total" class="hide">0</span>
+        </div>
+      </div>
+      <script src="js/main.js" type="module"></script>
     </div>
 
-    <!-- Prueba para alvaro -->
-    <div class="display"></div>
-    <!-- Listado pedido -->
-    <!-- <div class="order" id="order">
-        <h1>Pedido</h1>
-        <ul id="listOrder">
-
-        </ul>
-    </div> -->
-
-
-    <script src="js/main.js" type="module"></script>
-</body>
-
+    
+  </body>
 </html>
