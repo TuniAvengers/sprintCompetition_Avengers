@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const items = document.querySelectorAll(".product");
     return items.length;
   }
-  
+
   //Fetch data from JSON file
   fetch("/js/producto.json")
     .then(function (response) {
@@ -114,4 +114,12 @@ function eliminarElementoPorId(id) {
 
 document.getElementById("basket").addEventListener("click", function () {
   document.getElementById("order").classList.toggle("hide");
+});
+
+document.getElementById("pagar").addEventListener("click", function () {
+//   const full = document.getElementById("full-basket");
+//   const empty = document.getElementById("empty-basket");
+//   full.classList.remove("hide");
+//   empty.classList.add("hide");
+  window.location.href = "/templates/gracias.html";
 });
