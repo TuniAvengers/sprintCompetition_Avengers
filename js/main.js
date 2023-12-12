@@ -1,40 +1,21 @@
-
+import { slider } from "./slider.js";
 //SLIDER
-document.addEventListener("DOMContentLoaded", function () {
-  const images = document.querySelectorAll(".slider-img");
-  let currentIndex = 0;
-
-  function showImage(index) {
-    images.forEach((image, i) => {
-      if (i === index) {
-        image.classList.add("active");
-      } else {
-        image.classList.remove("active");
-      }
-    });
-  }
-
-  function nextImage() {
-    currentIndex = (currentIndex + 1) % images.length;
-    showImage(currentIndex);
-  }
-
-  setInterval(nextImage, 5000);
-});
+//document.addEventListener("DOMContentLoaded", slider);
 
 document.addEventListener("DOMContentLoaded", function () {
+  slider();
 
-    function basketContent(){
-        const full  = document.getElementById("full-basket");
-        const empty = document.getElementById("empty-basket");
-        if(itemsTotal() < 1){
-            full.classList.add("hide");
-            empty.classList.remove("hide");
-        } else{
-            full.classList.remove("hide");
-            empty.classList.add("hide");
-        }
+  function basketContent() {
+    const full = document.getElementById("full-basket");
+    const empty = document.getElementById("empty-basket");
+    if (itemsTotal() < 1) {
+      full.classList.add("hide");
+      empty.classList.remove("hide");
+    } else {
+      full.classList.remove("hide");
+      empty.classList.add("hide");
     }
+  }
 
   function addOrder(id, nombre, precio, peso) {
     //const total = document.getElementById("total");
@@ -80,7 +61,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const items = document.querySelectorAll(".product");
     return items.length;
   }
-  // Fetch the JSON file
+  
+  //Fetch data from JSON file
   fetch("/js/producto.json")
     .then(function (response) {
       return response.json();
@@ -131,5 +113,5 @@ function eliminarElementoPorId(id) {
 }
 
 document.getElementById("basket").addEventListener("click", function () {
-    document.getElementById("order").classList.toggle("hide");
+  document.getElementById("order").classList.toggle("hide");
 });
