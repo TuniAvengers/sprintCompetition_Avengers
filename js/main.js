@@ -38,7 +38,8 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
     
         document.getElementById("list-order").appendChild(listItem);
-        total.innerHTML = parseFloat(document.getElementById("total").innerHTML) + precio;
+        let precioTotal = parseFloat(document.getElementById("total").innerHTML) + precio;
+        total.innerHTML = precioTotal.toFixed(2);
     }
   // Fetch the JSON file
   fetch("js/producto.json")
