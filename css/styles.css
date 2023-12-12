@@ -79,9 +79,35 @@ li {
     overflow-y: auto;
 }
 
-.order h1 {
+.order #empty-basket h1 {
+    color: #777;
+    font-size: 1em;
+    font-weight: 200;
+    text-align: center;
+}
+
+.order #full-basket h1 {
     font-size: 1.5em;
     font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.order #full-basket #pagar {
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+}
+
+.order #full-basket #pagar:hover {
+    background-color: #28292b;
 }
 
 .order ul {
@@ -119,6 +145,7 @@ li {
     border-bottom: 1px solid #ccc;
     font-weight: 600;
     text-align: right;
+    margin-top: 10px;
 }
 
 .counter {
