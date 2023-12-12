@@ -63,7 +63,6 @@ li {
 }
 
 .order {
-    /* display: none; */
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -97,7 +96,6 @@ li {
     align-items: center;
     padding-top: 10px;
     border-top: 1px solid #ccc;
-    /* background-color: red; */
 }
 
 .order .btn-danger {
@@ -121,6 +119,21 @@ li {
     border-bottom: 1px solid #ccc;
     font-weight: 600;
     text-align: right;
+}
+
+.counter {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
 }
 
 .banner {
