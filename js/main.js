@@ -37,6 +37,10 @@ document.addEventListener("DOMContentLoaded", function () {
             <p>${precio}€</p>
             <button class="btn btn-danger">x</button>
         `;
+        listItem.querySelector("button").addEventListener("click", function () {
+            eliminarElementoPorId(id);
+        });
+        
     
         document.getElementById("list-order").appendChild(listItem);
         let precioTotal = parseFloat(document.getElementById("total").innerHTML) + precio;
@@ -76,4 +80,20 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   
+});
+
+
+function eliminarElementoPorId(id) {
+    const elemento = document.getElementById(id);
+
+    if (elemento) {
+        // Si el elemento existe, lo eliminamos
+        elemento.parentNode.removeChild(elemento);
+    } else {
+        console.log(`No se encontró un elemento con el id ${id}`);
+    }
+}
+
+document.getElementById("basket").addEventListener("click", function () {
+    document.getElementById("order").classList.toggle("hide");
 });
