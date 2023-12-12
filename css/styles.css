@@ -49,6 +49,13 @@ li {
     white-space: nowrap;
 }
 
+.menu button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1em;
+}
+
 .menu svg {
     width: 32px;
     height: 32px;

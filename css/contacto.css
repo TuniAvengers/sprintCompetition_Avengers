@@ -12,12 +12,6 @@
     margin-bottom: 10px;
 }
 
-.contacto form {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-}
-
 .contacto label {
     display: block;
     margin-bottom: 5px;
@@ -36,14 +30,15 @@
 }
 
 .contacto input[type="submit"] {
-    background-color: #4caf50;
-    color: #fff;
+    background-color: #ffd700;
+    color: #000;
+    font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .contacto input[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #e6b800;
 }
 
 @media screen and (max-width: 600px) {
