@@ -1,20 +1,34 @@
+.content {
+    display: flex;
+    gap: 120px;
+}
+
+.informacion {
+    flex: 1;
+}
+
 .informacion h1 {
     font-size: 24px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    color: #ffd700;
 }
 
 .informacion h3 {
     font-size: 18px;
-    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .informacion p {
     margin-bottom: 10px;
 }
 
+.contacto {
+    flex: 1;
+}
+
 .contacto label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
 
 .contacto input,
@@ -26,7 +40,7 @@
 }
 
 .contacto textarea {
-    resize: vertical;
+    resize: none;
 }
 
 .contacto input[type="submit"] {

@@ -54,6 +54,7 @@ li {
     border: none;
     color: #fff;
     font-size: 1em;
+    cursor: pointer;
 }
 
 .menu svg {
