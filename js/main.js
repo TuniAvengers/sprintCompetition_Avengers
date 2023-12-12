@@ -1,32 +1,42 @@
 // Fetch the JSON file
 fetch("js/producto.json")
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-        appendData(data);
-    })
-    .catch(function (err) {
-        console.log("error: " + err);
-    });
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    appendData(data);
+  })
+  .catch(function (err) {
+    console.log("error: " + err);
+  });
 
 // Append the data to the DOM
 function appendData(data) {
-    const mainContainer = document.querySelector(".display");
-    for (let i = 0; i < data.productos.length; i++) {
-        const div = document.createElement("div");
-        div.innerHTML = `<div class="card">
+  const mainContainer = document.querySelector(".display");
+  for (let i = 0; i < data.productos.length; i++) {
+    const div = document.createElement("div");
+    div.innerHTML = `<div class="card">
         <img src="${data.productos[i].imagen}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">${data.productos[i].nombre}</h5>
           <p class="card-text">Ración: ${data.productos[i].peso} kg</p>
           <p class="card-text">${data.productos[i].precio}€ IVA incl.</p>
-          <a href="#" class="btn btn-primary">Comprar</a>
+          <a href="#order" class="btn btn-primary" onclick="addOrder(${data.productos[i]})">Comprar</a>
         </div>
       </div>`;
-        mainContainer.appendChild(div);
-    }
+    mainContainer.appendChild(div);
+  }
 }
+
+// function addOrder(producto) {
+//   orderDisplay = document.getElementById("listOrder");
+//   orderDisplay.innerHTML += `
+//       <li>
+//       <p>${producto.nombre}</p>
+//       <p>${producto.precio}€</p>
+//       </li>
+//       `;
+// };
 
 // //CODIGO SLIDER
 // let slideIndex = 0;
@@ -94,26 +104,26 @@ function appendData(data) {
 // }
 
 document.addEventListener("DOMContentLoaded", function () {
-    document.addEventListener("DOMContentLoaded", function () {
-        // Obtén las imágenes y el contenedor del slider
-        var slides = document.querySelectorAll(".slide");
-        var currentSlide = 0;
+  document.addEventListener("DOMContentLoaded", function () {
+    // Obtén las imágenes y el contenedor del slider
+    var slides = document.querySelectorAll(".slide");
+    var currentSlide = 0;
 
-        // Muestra el primer slide
-        slides[currentSlide].style.display = "block";
+    // Muestra el primer slide
+    slides[currentSlide].style.display = "block";
 
-        // Función para cambiar al siguiente slide con fade
-        function nextSlide() {
-            slides[currentSlide].style.animation = "fadeout 1s";
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].style.animation = "fadein 1s";
-            slides[currentSlide].style.display = "block";
-            setTimeout(function () {
-                slides[currentSlide].style.display = "none";
-            }, 2000); // Tiempo de espera antes de ocultar el slide anterior
-        }
+    // Función para cambiar al siguiente slide con fade
+    function nextSlide() {
+      slides[currentSlide].style.animation = "fadeout 1s";
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].style.animation = "fadein 1s";
+      slides[currentSlide].style.display = "block";
+      setTimeout(function () {
+        slides[currentSlide].style.display = "none";
+      }, 2000); // Tiempo de espera antes de ocultar el slide anterior
+    }
 
-        // Configura la transición automática cada 3 segundos (ajusta según tus necesidades)
-        setInterval(nextSlide, 4000);
-    });
+    // Configura la transición automática cada 3 segundos (ajusta según tus necesidades)
+    setInterval(nextSlide, 4000);
+  });
 });
