@@ -26,7 +26,8 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", function () {
     function addOrder(id, nombre, precio, peso) {    
         const total = document.getElementById("total");
-        total.classList.remove("hide");
+        const totalText = document.getElementById("total-text");
+        totalText.classList.remove("hide");
         const listItem = document.createElement("li");
         //añadimos el id del producto al elemento li
         listItem.setAttribute("id", id);
@@ -34,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <p>${nombre}</p>
             <p>${peso} kg</p>
             <p>${precio}€</p>
-            <button class="btn btn-danger">X</button>
+            <button class="btn btn-danger">x</button>
         `;
     
         document.getElementById("list-order").appendChild(listItem);

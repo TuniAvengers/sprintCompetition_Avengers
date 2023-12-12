@@ -35,11 +35,92 @@ li {
     width: 80px;
 }
 
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .header .menu ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
+    white-space: nowrap;
+}
+
+.menu svg {
+    width: 32px;
+    height: 32px;
+    margin-left: 20px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.menu svg:hover {
+    background-color: #28292b;
+    border-radius: 50%;
+}
+
+.order {
+    /* display: none; */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #fff;
+    color: #000;
+    width: 350px;
+    max-height: 500px;
+    padding: 20px;
+    border-radius: 10px;
+    position: absolute;
+    top: 80px;
+    right: 40px;
+    z-index: 100;
+    overflow-y: auto;
+}
+
+.order h1 {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.order ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.order ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+    /* background-color: red; */
+}
+
+.order .btn-danger {
+    width: 20px;
+    height: 20px;
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.order .btn-danger:hover {
+    background-color: red;
+    color: #fff;
+}
+
+.order #total-text {
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    font-weight: 600;
+    text-align: right;
 }
 
 .banner {
@@ -125,11 +206,11 @@ li {
 }
 
 /*Prototipo*/
-.hide{
+.hide {
     display: none;
 }
 
-li{
+#list-order li {
     display: flex;
     flex-direction: row;
     gap: 10px;
