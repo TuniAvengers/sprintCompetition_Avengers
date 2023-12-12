@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return items.length;
   }
   // Fetch the JSON file
-  fetch("js/producto.json")
+  fetch("/js/producto.json")
     .then(function (response) {
       return response.json();
     })
