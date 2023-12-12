@@ -255,3 +255,12 @@ li {
     flex-direction: row;
     gap: 10px;
 }
+
+footer {
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    font-size: 0.8em;
+    border-top: 1px solid #ccc;
+}

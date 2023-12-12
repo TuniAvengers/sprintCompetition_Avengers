@@ -1,0 +1,58 @@
+.informacion h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.informacion h3 {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.informacion p {
+    margin-bottom: 10px;
+}
+
+.contacto form {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.contacto label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.contacto input,
+.contacto select,
+.contacto textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.contacto textarea {
+    resize: vertical;
+}
+
+.contacto input[type="submit"] {
+    background-color: #4caf50;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contacto input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+@media screen and (max-width: 600px) {
+    .menu {
+        flex-direction: column;
+    }
+
+    .menu li {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
